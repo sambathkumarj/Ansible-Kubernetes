@@ -23,16 +23,16 @@
 
     - name: Add user to microk8s group
       user:
-        name: "sambath-nexn"
+        name: "<username>"
         groups: microk8s
         append: yes
 
     - name: Change ownership of the .kube directory
       file:
-        path: /home/sambath-nexn/.kube
+        path: /home/<username>/.kube
         state: directory
-        owner: "sambath-nexn"
-        group: "sambath-nexn"
+        owner: "<username>"
+        group: "<username>"
 
     - name: Enable MicroK8s addons
       shell: |
@@ -54,14 +54,29 @@
 
     - name: Ensure .kube config exists
       file:
-        path: /home/sambath-nexn/.kube/config
+        path: /home/<username>/.kube/config
         state: touch
-        owner: "sambath-nexn"
-        group: "sambath-nexn"
+        owner: "<username>"
+        group: "<username>"
 
     - name: Set up kubeconfig for the user
       shell: |
-        microk8s config > /home/sambath-nexn/.kube/config
+        microk8s config > /home/<username>/.kube/config
       args:
         executable: /bin/bash
-      become_user: "sambath-nexn"
+      become_user: "<username>"
+
+    - name: Add the Open5GS Helm repository
+      command: microk8s helm repo add adaptivenetlab https://adaptivenetlab.github.io/charts/
+
+    - name: Update Helm repositories
+      command: microk8s helm repo update
+
+    - name: Open5gs Namespace
+      command: microk8s kubectl create ns open5gs
+
+    - name: Install Open5GS using Helm
+      command: microk8s helm install my-open5gs adaptivenetlab/open5gs --version 1.0.3 -n open5gs
+
+    - name: Check Open5gs NFV deployment
+      command: microk8s kubectl get pod -n open5gs
