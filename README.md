@@ -1,5 +1,7 @@
 # Ansible-Kubernetes_Cluster-Open5gs
 
+![Screenshot from 2024-06-14 15-44-00](https://github.com/sambathkumarj/Ansible-Kubernetes/assets/42794636/20c1835d-3e39-4dcb-a7a8-352693f04d9a)
+
 # Ansible 
 
 Ansible is an open-source automation tool used for IT tasks such as configuration management, application deployment, and task automation. It is simple, agentless, and powerful, making it a popular choice for managing infrastructure and deploying applications.
