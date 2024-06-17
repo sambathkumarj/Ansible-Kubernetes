@@ -10,7 +10,7 @@ Agentless: Ansible uses SSH for communication, eliminating the need for installi
 
 Human-readable YAML: Ansible playbooks are written in YAML, making them easy to read and write.
 
-Idempotency: Ansible ensures tasks are repeatable and only make changes when necessary, avoiding redundancy.
+Idempotency: Ansible ensures tasks are repeatable and only makes changes when necessary, avoiding redundancy.
 
 Modular: Ansible comes with a vast collection of built-in modules, and you can also create custom ones.
 
@@ -64,8 +64,8 @@ sudo apt-get install sshpass
 Create an inventory file (e.g., `inventory.ini`) that lists your target machines.
 
 ```
-[ubuntu_servers]
-192.168.1.240 ansible_user=your_username ansible_
+[microk8s_nodes]
+Microk8s_node ansible_host=192.168.1.240 ansible_user=<username> ansible_password=<password> ansible_sudo_pass=<password>
 ```
 
 # Step 3: Write the Ansible Playbook
@@ -157,6 +157,12 @@ Create a playbook (e.g., `install_k8s.yml`) that installs MicroK8s and Helm, and
     - name: Check Open5gs NFV deployment
       command: microk8s kubectl get pod -n open5gs
 
+```
+
+# To run Ansible-Playbook
+
+```
+ansible-playbook -i inventory.ini install_microk8s.yml
 ```
 
 
