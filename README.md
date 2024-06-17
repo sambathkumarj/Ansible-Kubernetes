@@ -70,6 +70,9 @@ Create an inventory file (e.g., `inventory.ini`) that lists your target machines
 Microk8s_node ansible_host=192.168.1.240 ansible_user=<username> ansible_password=<password> ansible_sudo_pass=<password>
 ```
 
+![ansible-helm](https://github.com/sambathkumarj/Ansible-Kubernetes/assets/42794636/17ab4b2c-d253-4219-9ad5-8484c88fb8b4)
+
+
 # Step 3: Write the Ansible Playbook
 
 Create a playbook (e.g., `install_k8s.yml`) that installs MicroK8s and Helm, and deploys Open5GS.
@@ -167,6 +170,11 @@ Create a playbook (e.g., `install_k8s.yml`) that installs MicroK8s and Helm, and
 ansible-playbook -i inventory.ini install_microk8s.yml
 ```
 
+![Screenshot from 2024-06-17 15-34-56](https://github.com/sambathkumarj/Ansible-Kubernetes/assets/42794636/b8fbd85e-8744-4f96-9808-084b67e81a77)
+
+
+![Screenshot from 2024-06-14 16-04-03](https://github.com/sambathkumarj/Ansible-Kubernetes/assets/42794636/b5518163-30c3-4f44-8c5d-e7a1d33baf54)
+
 
 # Explanation of the Playbook
 
@@ -182,6 +190,10 @@ ansible-playbook -i inventory.ini install_microk8s.yml
 10. Update Helm Repositories: Updates the Helm repositories to ensure the latest charts are available.
 11. Install Open5GS Using Helm: Installs Open5GS using Helm.
 12. Check Whether Open5gs NFV deployed on the cluster.
+
+![Screenshot from 2024-06-17 15-55-24](https://github.com/sambathkumarj/Ansible-Kubernetes/assets/42794636/8fa9726c-b93b-4bdb-b1c7-f831e5ee3aba)
+
+![Screenshot from 2024-06-17 15-51-53](https://github.com/sambathkumarj/Ansible-Kubernetes/assets/42794636/6c7294ca-90a9-48c2-886f-f32ef14039de)
 
 
 Thus, Ansible makes automating complex tasks like deploying a Kubernetes cluster straightforward and efficient. By writing clear, reusable playbooks, you can manage your infrastructure consistently and reliably. This example demonstrates how you can deploy a Kubernetes cluster with MicroK8s and install Open5GS using Helm, showcasing the power and flexibility of Ansible.
