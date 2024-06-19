@@ -1,0 +1,10 @@
+---
+- name: Patch Kubernetes Service
+  hosts: local
+  gather_facts: no
+  tasks:
+    - name: Patch Service type to LoadBalancer
+      command: >
+        microk8s kubectl patch svc my-open5gs-webui -n open5gs
+        -p '{"spec": {"type": "NodePort"}}'
+
